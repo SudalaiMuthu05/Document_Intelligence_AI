@@ -5,9 +5,11 @@ supabase
 redis
 celery
 groq
-paddleocr
-paddlepaddle
-langchain
 sentence-transformers
 python-dotenv
-pypdf
+pymupdf
+easyocr
+opencv-python-headless
+torch
+torchvision
+numpy==1.26.4
