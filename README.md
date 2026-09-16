@@ -57,22 +57,18 @@ Sensitive information is automatically masked before AI processing.
 Examples:
 
 ```text
-9876543210
-→ XXXX3210
+Phone: +91 98765 43210  →  XXXXX 43210
+PAN:   ABCDE1234F       →  XXXXX1234F
+ID:    XXXX-XXXX-9012   →  XXXX-XXXX-9012
 
-ABCDE1234F
-→ XXXXX1234F
-
-1234 5678 9012
-→ XXXX XXXX 9012
 ```
 
 Protects:
 
-- Phone Numbers
-- Aadhaar Numbers
-- PAN Numbers
-- Sensitive IDs
+* Phone Numbers
+* Government Identification IDs
+* PAN Numbers
+* Sensitive Financial & Personal IDs
 
 ---
 
@@ -96,6 +92,7 @@ Classification
 Routing
         ↓
 Database Storage
+
 ```
 
 ---
@@ -114,6 +111,7 @@ What is the order number?
 What is the candidate's 10th percentage?
 
 What skills are mentioned in the resume?
+
 ```
 
 The system retrieves relevant document chunks and generates context-aware answers.
@@ -124,12 +122,12 @@ The system retrieves relevant document chunks and generates context-aware answer
 
 Provides:
 
-- Uploaded Documents
-- Classification Results
-- Confidence Scores
-- Department Routing
-- Processing Status
-- AI Chat Interface
+* Uploaded Documents
+* Classification Results
+* Confidence Scores
+* Department Routing
+* Processing Status
+* AI Chat Interface
 
 ---
 
@@ -153,6 +151,7 @@ Groq LLM
 Supabase Database
         ↓
 Celery + Redis
+
 ```
 
 ---
@@ -161,77 +160,75 @@ Celery + Redis
 
 ### Frontend
 
-- React.js
-- Vite
-- Axios
-- React Router DOM
-- Framer Motion
+* React.js
+* Vite
+* Axios
+* React Router DOM
+* Framer Motion
 
 ### Backend
 
-- FastAPI
-- Python
-- Celery
-- Redis
+* FastAPI
+* Python
+* Celery
+* Redis
 
 ### AI & NLP
 
-- Groq API
-- Llama 3.3 70B
-- Sentence Transformers
-- RAG Pipeline
+* Groq API
+* Llama 3.3 70B
+* Sentence Transformers
+* RAG Pipeline
 
 ### Database
 
-- Supabase PostgreSQL
+* Supabase PostgreSQL
 
 ### OCR
 
-- EasyOCR / PaddleOCR
+* EasyOCR / PaddleOCR
 
 ### Email Processing
 
-- IMAP
-- Gmail App Password
+* IMAP
+* Gmail App Password
 
 ---
 
 ## Project Structure
 
 ```text
-document-intelligence/
-
+Document_Intelligence_AI/
 │
 ├── backend/
-│
-├── agents/
-│   ├── extractor_agent.py
-│   ├── classifier_agent.py
-│   ├── router_agent.py
-│   ├── pii_agent.py
-│   ├── email_agent.py
-│   └── ocr_helper.py
-│
-├── rag/
-│   ├── chunker.py
-│   ├── embeddings.py
-│   ├── retrieval.py
-│   └── qa_agent.py
-│
-├── routes/
-│   ├── upload_routes.py
-│   ├── document_routes.py
-│   ├── email_routes.py
-│   ├── dashboard_routes.py
-│   └── chat_routes.py
+│   ├── agents/
+│   │   ├── extractor_agent.py
+│   │   ├── classifier_agent.py
+│   │   ├── router_agent.py
+│   │   ├── pii_agent.py
+│   │   ├── email_agent.py
+│   │   └── ocr_helper.py
+│   │
+│   ├── rag/
+│   │   ├── chunker.py
+│   │   ├── embeddings.py
+│   │   ├── retrieval.py
+│   │   └── qa_agent.py
+│   │
+│   └── routes/
+│       ├── upload_routes.py
+│       ├── document_routes.py
+│       ├── email_routes.py
+│       ├── dashboard_routes.py
+│       └── chat_routes.py
 │
 ├── frontend/
-│
-├── components/
-├── pages/
-├── services/
+│   ├── components/
+│   ├── pages/
+│   └── services/
 │
 └── README.md
+
 ```
 
 ---
@@ -241,9 +238,10 @@ document-intelligence/
 ### Clone Repository
 
 ```bash
-git clone https://github.com/your-username/document-intelligence-system.git
+git clone [https://github.com/SudalaiMuthu05/Document_Intelligence_AI.git](https://github.com/SudalaiMuthu05/Document_Intelligence_AI.git)
 
-cd document-intelligence-system
+cd Document_Intelligence_AI
+
 ```
 
 ---
@@ -254,9 +252,10 @@ cd document-intelligence-system
 cd backend
 
 pip install -r requirements.txt
+
 ```
 
-Create `.env`
+Create `.env`:
 
 ```env
 SUPABASE_URL=YOUR_SUPABASE_URL
@@ -270,12 +269,14 @@ REDIS_URL=redis://localhost:6379/0
 EMAIL_ID=your_email@gmail.com
 
 EMAIL_PASSWORD=your_app_password
+
 ```
 
 Run Backend:
 
 ```bash
 uvicorn main:app --reload
+
 ```
 
 ---
@@ -284,6 +285,7 @@ uvicorn main:app --reload
 
 ```bash
 celery -A celery_worker.celery_app worker --pool=solo --loglevel=info
+
 ```
 
 ---
@@ -292,6 +294,7 @@ celery -A celery_worker.celery_app worker --pool=solo --loglevel=info
 
 ```bash
 redis-server
+
 ```
 
 ---
@@ -304,6 +307,7 @@ cd frontend
 npm install
 
 npm run dev
+
 ```
 
 ---
@@ -314,6 +318,7 @@ npm run dev
 
 ```http
 POST /upload
+
 ```
 
 ---
@@ -322,6 +327,7 @@ POST /upload
 
 ```http
 GET /documents
+
 ```
 
 ---
@@ -330,6 +336,7 @@ GET /documents
 
 ```http
 GET /check-email
+
 ```
 
 ---
@@ -338,6 +345,7 @@ GET /check-email
 
 ```http
 POST /ask
+
 ```
 
 Parameters:
@@ -345,47 +353,47 @@ Parameters:
 ```text
 question
 document_id
+
 ```
 
 Example:
 
 ```text
 What is the invoice number?
+
 ```
 
 ---
 
 ## Future Enhancements
 
-- Multi-language OCR
-- Vector Database Integration
-- Document Summarization
-- Semantic Search
-- Approval Workflow Engine
-- Role-Based Access Control
-- Analytics Dashboard
-- Cloud Storage Integration
-- Docker Deployment
-- Kubernetes Support
+* Multi-language OCR
+* Vector Database Integration
+* Document Summarization
+* Semantic Search
+* Approval Workflow Engine
+* Role-Based Access Control
+* Analytics Dashboard
+* Cloud Storage Integration
+* Docker Deployment
+* Kubernetes Support
 
 ---
 
 ## Author
 
-### Shachindran Rao
+### SUDALAI MUTHU S
 
-B.Tech Information Technology
+GitHub: [SudalaiMuthu05](https://github.com/SudalaiMuthu05)
 
-Panimalar Engineering College
-
-GitHub:
-https://github.com/shaz-dr24
-
-LinkedIn:
-https://www.linkedin.com/in/shachindran-h-a-55527a293
+Repository: [Document_Intelligence_AI](https://github.com/SudalaiMuthu05/Document_Intelligence_AI)
 
 ---
 
 ## License
 
-This project is developed for educational, research, and enterprise automation purposes.
+This project is open source and available under the [MIT License](https://www.google.com/search?q=LICENSE).
+
+```
+
+```
